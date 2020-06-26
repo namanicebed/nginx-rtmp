@@ -1,0 +1,19 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t namanicebed/nginx-rtmp .
+
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-south-1"
+  app: "nginx-rtmp"
+  env: "NginxRtmp-env"
+  bucket_name: "elasticbeanstalk-ap-south-1-577083701161"
+  bucket_path: "nginx-rtmp"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
