@@ -6,9 +6,6 @@ services:
 before_install:
   - docker build -t namanicebed/nginx-rtmp .
 
-script:
-  - docker run -d -p 1935:1935 namanicebed/nginx-rtmp 
-
 deploy:
   provider: elasticbeanstalk
   region: "ap-south-1"
